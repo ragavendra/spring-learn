@@ -22,7 +22,7 @@ public class MobileAppWsApplicationTests {
 @RestController
 class TestController {
 
-    @GetMapping("/api/test")
+    @GetMapping("/users")
     public String testRateLimiting() {
         return "Request Successful!";
     }
