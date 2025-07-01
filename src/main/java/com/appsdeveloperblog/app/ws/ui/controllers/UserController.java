@@ -2,8 +2,6 @@ package com.appsdeveloperblog.app.ws.ui.controllers;
 
 import java.util.Map;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,6 +20,8 @@ import com.appsdeveloperblog.app.ws.ui.model.request.UpdateUserDetailsRequestMod
 import com.appsdeveloperblog.app.ws.ui.model.request.UserDetailsRequestModel;
 import com.appsdeveloperblog.app.ws.ui.model.response.UserRest;
 import com.appsdeveloperblog.app.ws.userservice.UserService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/users")
