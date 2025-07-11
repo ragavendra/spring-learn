@@ -22,6 +22,10 @@ c. Has persistence with REST.
 // for auth
 curl --user raga:Passw0rd -v http://localhost:8080/jakartaee-hello-world/rest/hello
 
+TOKEN=`jwt encode --aud "cashcard-client" --iss "https://issuer.example.org" --alg RS256 --exp=+3600S --sub "sarah1" -P "scp=[ \"cashcard:read\", \"cashcard:write\" ]" --secret @"src/main/resources/authz.pem"`
+
+curl -H "Authorization: bearer $TOKEN" $HOST:$PORT/users
+
 // for pers
 curl -X POST \
  http://localhost:8080/jakartaee-hello-world/rest/coffees \
@@ -57,6 +61,9 @@ curl -X GET $HOST:$PORT/trips/byRouteId?routeid=1
 curl -X GET $HOST:$PORT/routes/loadAll?truncate=true\&region=$REGION
 curl -X GET $HOST:$PORT/routes
 
+// decode JWT
+TOKEN=sdfff.sdffss.sdsdf
+jq -R 'split(".") | .[0],.[1] | @base64d | fromjson' <<< $(cat "${TOKEN}")
 ```
 
 More info [here](https://jakarta.ee/learn/starter-guides/how-to-store-and-retrieve-data-using-jakarta-persistence/)

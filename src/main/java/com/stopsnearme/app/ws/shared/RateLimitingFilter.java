@@ -33,7 +33,7 @@ public class RateLimitingFilter implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 
-		// filter only for this path 
+		// filter only for not this path 
 		if(!httpServletRequest.getRequestURI().endsWith("/users")){
 			// Allow the request to proceed
 			chain.doFilter(request, response);
@@ -71,7 +71,7 @@ public class RateLimitingFilter implements Filter {
     @Override
     public void destroy() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'destroy'");
+        // throw new UnsupportedOperationException("Unimplemented method 'destroy'");
     }
 }
 

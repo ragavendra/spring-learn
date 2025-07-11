@@ -3,6 +3,7 @@ package com.stopsnearme.app.ws.ui.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -68,9 +69,10 @@ public class FetchStaticsController {
 	@Autowired
     private JobRepository jobRepository;
 
+	// @PreAuthorize("")
     @GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
     public String dowmloadStatics(@DefaultValue("austin") @RequestParam(value="region", defaultValue="austin") String region) {
-        // logger.log(Level.INFO, "Lock for {0}.", lock.hashCode());
+        logger.log(Level.INFO, "Lock for {0}.", lock.hashCode());
 
         // synchronized (lock) {
         // if (lock.tryLock()) {
