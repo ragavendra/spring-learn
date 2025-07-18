@@ -1,0 +1,13 @@
+package com.stopsnearme.app.ws;
+
+public class CashCardRequest {
+	private Double amount;
+
+    public Double amount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+}

@@ -35,7 +35,7 @@ public class MobileAppWsApplication {
 			.authorizeHttpRequests((authorize) -> authorize
 					.requestMatchers(HttpMethod.GET,"/users/**")
 					.hasAuthority("SCOPE_cashcard:read")
-					.requestMatchers(HttpMethod.GET,"/users/**")
+					.requestMatchers("/users/**")
 					.hasAuthority("SCOPE_cashcard:write")
 					.anyRequest().authenticated()
 					)

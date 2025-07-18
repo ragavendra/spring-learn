@@ -43,4 +43,7 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
+	public UserRest fetchUser(String userId) {
+		return users.get(userId);
+	}
 }

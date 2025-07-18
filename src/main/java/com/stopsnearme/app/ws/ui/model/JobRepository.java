@@ -14,9 +14,6 @@ import com.stopsnearme.app.ws.ui.model.entity.Job;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
-class A{}
-class B{}
-
 // @Stateless
 @Repository
 public class JobRepository {

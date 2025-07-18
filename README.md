@@ -25,6 +25,16 @@ curl --user raga:Passw0rd -v http://localhost:8080/jakartaee-hello-world/rest/he
 TOKEN=`jwt encode --aud "cashcard-client" --iss "https://issuer.example.org" --alg RS256 --exp=+3600S --sub "sarah1" -P "scp=[ \"cashcard:read\", \"cashcard:write\" ]" --secret @"src/main/resources/authz.pem"`
 
 curl -H "Authorization: bearer $TOKEN" $HOST:$PORT/users
+curl -H "Authorization: bearer $TOKEN" $HOST:$PORT/users -i -H "Content-Type:application/json" -d '{"firstName": "Frodo", "lastName": "Baggins", "email":"eer@df.ca", "password": "passedsdfsd"}'
+
+curl -H "Authorization: bearer $TOKEN" $HOST:$PORT/people
+
+curl -H "Authorization: bearer $TOKEN" $HOST:$PORT/people -i -H "Content-Type:application/json" -d '{"firstName": "Frodo", "lastName": "Baggins"}'
+
+curl -H "Authorization: bearer $TOKEN" $HOST:$PORT/people/1
+
+curl -X PUT -H "Authorization: bearer $TOKEN" $HOST:$PORT/people/1 -i -H "Content-Type:application/json" -d '{"firstName": "iFrodo", "lastName": "Baggins"}'
+
 
 // for pers
 curl -X POST \
