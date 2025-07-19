@@ -1,10 +1,12 @@
 package com.stopsnearme.app.ws.exceptions;
 
 import java.util.Date;
+import java.util.HashMap;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -23,9 +25,12 @@ public class AppExceptionsHandler extends ResponseEntityExceptionHandler {
     	if(errorMessageDescription == null) errorMessageDescription = ex.toString();
     	
     	ErrorMessage errorMessage = new ErrorMessage(new Date(), errorMessageDescription);
+
+		MultiValueMap multiValueMap = (MultiValueMap) new HashMap<String, String>();
+		multiValueMap.add("Content-Type", "application/json");
     	
-    	return new ResponseEntity<>(
-    			errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+    	return new ResponseEntity<Object>(
+    			errorMessage, multiValueMap, HttpStatus.INTERNAL_SERVER_ERROR);
     	
     }
     
@@ -33,12 +38,13 @@ public class AppExceptionsHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleSpecificExceptions(Exception ex, WebRequest request) {
         
     	String errorMessageDescription = ex.getLocalizedMessage();
+		errorMessageDescription = errorMessageDescription + " this is custom";
     	
     	if(errorMessageDescription == null) errorMessageDescription = ex.toString();
     	
     	ErrorMessage errorMessage = new ErrorMessage(new Date(), errorMessageDescription);
     	
-    	return new ResponseEntity<>(
+    	return new ResponseEntity<Object>(
     			errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
     	
     }

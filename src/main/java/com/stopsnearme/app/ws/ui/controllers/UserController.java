@@ -59,7 +59,7 @@ public class UserController {
 	}
 		
 	@GetMapping(path="/{userId}", produces =  { MediaType.APPLICATION_JSON_VALUE} )
-	// @PostAuthorize("returnObject.body.firstName == authentication.name")
+	// @PostAuthorize("returnObject.body.userName == authentication.name")
 	public ResponseEntity<Person> getPersonName(@PathVariable long userId)
 	// public ResponseEntity<UserRest> getPersonName(@PathVariable String userId)
 	// public ResponseEntity<Person> getPersonById(@PathVariable Long userId)
@@ -68,6 +68,7 @@ public class UserController {
 		Long no = new Long(2);
         return this.personRepo.findById(userId)
                 .map(ResponseEntity::ok)
+                // .orElseGet(() -> ResponseEntity.notFound().build());
                 .orElseGet(() -> ResponseEntity.notFound().build());
 		//  */
 		// var returnValue = userService.fetchUser(userId);
@@ -90,13 +91,7 @@ public class UserController {
 		}
 	}*/
 	
-	@PostMapping(
-			consumes =  { 
-			MediaType.APPLICATION_JSON_VALUE
-			}, 
-			produces =  { 
-					MediaType.APPLICATION_JSON_VALUE
-					}  )
+	@PostMapping(consumes =  { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<UserRest> createUser(@Valid @RequestBody UserDetailsRequestModel userDetails)
 	{
 
@@ -122,6 +117,7 @@ public class UserController {
 		 return storedUserDetails;
 	}
 	
+	@PostAuthorize("returnObject.body.userName == authentication.name")
 	@DeleteMapping(path="/{id}")
 	public ResponseEntity<Void> deleteUser(@PathVariable String id)
 	{
