@@ -68,7 +68,6 @@ public class UserController {
 		Long no = new Long(2);
         return this.personRepo.findById(userId)
                 .map(ResponseEntity::ok)
-                // .orElseGet(() -> ResponseEntity.notFound().build());
                 .orElseGet(() -> ResponseEntity.notFound().build());
 		//  */
 		// var returnValue = userService.fetchUser(userId);
