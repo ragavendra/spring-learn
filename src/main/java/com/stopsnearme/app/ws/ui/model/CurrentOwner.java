@@ -1,4 +1,4 @@
-package com.stopsnearme.app.ws;
+package com.stopsnearme.app.ws.ui.model;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

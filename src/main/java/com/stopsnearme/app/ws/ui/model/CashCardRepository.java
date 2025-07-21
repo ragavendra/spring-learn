@@ -1,4 +1,4 @@
-package com.stopsnearme.app.ws;
+package com.stopsnearme.app.ws.ui.model;
 
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -15,6 +15,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface CashCardRepository extends CrudRepository<CashCard, Long> {
 	Iterable<CashCard> findByOwner(String owner);
 
-	@Query("select * from cash_card cc where cc.owner = :#{authentication.name}")
+	// @Query("select * from cash_card cc where cc.owner = :#{authentication.name}")
 	Iterable<CashCard> findAll();
 }

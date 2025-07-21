@@ -60,6 +60,7 @@ public class UserController {
 		
 	@GetMapping(path="/{userId}", produces =  { MediaType.APPLICATION_JSON_VALUE} )
 	// @PostAuthorize("returnObject.body.userName == authentication.name")
+	@PostAuthorize("returnObject.body.userName == authentication.name")
 	public ResponseEntity<Person> getPersonName(@PathVariable long userId)
 	// public ResponseEntity<UserRest> getPersonName(@PathVariable String userId)
 	// public ResponseEntity<Person> getPersonById(@PathVariable Long userId)
@@ -68,7 +69,9 @@ public class UserController {
 		Long no = new Long(2);
         return this.personRepo.findById(userId)
                 .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                // .orElseGet(() -> ResponseEntity.notFound().build());
+                .orElseGet(() -> ResponseEntity.badRequest().build());
+                // .orElseGet(() -> new ResponseEntity<Person>(HttpStatus.NOT_FOUND));
 		//  */
 		// var returnValue = userService.fetchUser(userId);
 		// return new ResponseEntity<UserRest>(returnValue, HttpStatus.OK);

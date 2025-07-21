@@ -69,7 +69,7 @@ public class FetchStaticsController {
 	@Autowired
     private JobRepository jobRepository;
 
-	// @PreAuthorize("")
+	@PreAuthorize("'usefro' == authentication.name")
     @GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
     public String dowmloadStatics(@DefaultValue("austin") @RequestParam(value="region", defaultValue="austin") String region) {
         logger.log(Level.INFO, "Lock for {0}.", lock.hashCode());

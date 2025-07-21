@@ -1,4 +1,4 @@
-package com.stopsnearme.app.ws;
+package com.stopsnearme.app.ws.ui.controllers;
 
 import java.net.URI;
 
@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import com.stopsnearme.app.ws.ui.model.CashCard;
+import com.stopsnearme.app.ws.ui.model.CashCardRepository;
+import com.stopsnearme.app.ws.ui.model.CurrentOwner;
+import com.stopsnearme.app.ws.ui.model.request.CashCardRequest;
 
 /**
  * The cash card REST API

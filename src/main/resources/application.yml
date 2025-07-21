@@ -8,5 +8,3 @@ spring:
       resourceserver:
         jwt:
           public-key-location: classpath:authz.pub
-          # can be included
-          #audiences: cashcard-client

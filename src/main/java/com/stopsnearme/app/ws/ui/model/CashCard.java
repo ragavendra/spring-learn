@@ -1,4 +1,4 @@
-package com.stopsnearme.app.ws;
+package com.stopsnearme.app.ws.ui.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

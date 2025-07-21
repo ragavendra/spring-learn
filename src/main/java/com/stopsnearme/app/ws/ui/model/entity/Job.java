@@ -19,7 +19,7 @@ import jakarta.persistence.Id;
 public class Job implements Serializable, IJob {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private Type type;
     private Status  status;
 

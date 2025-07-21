@@ -1,4 +1,4 @@
-package com.stopsnearme.app.ws;
+package com.stopsnearme.app.ws.ui.model.request;
 
 public class CashCardRequest {
 	private Double amount;
