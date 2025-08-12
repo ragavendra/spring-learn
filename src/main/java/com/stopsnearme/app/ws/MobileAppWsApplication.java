@@ -45,13 +45,13 @@ public class MobileAppWsApplication {
 					);
 		return http.build();
 	}
-
+/* 
 	@Bean
 	public FilterRegistrationBean<RateLimitingFilter> rateLimitingFilter_() {
 		FilterRegistrationBean<RateLimitingFilter> registrationBean = new FilterRegistrationBean<>();
 		registrationBean.setFilter(new RateLimitingFilter());
-		// this is not working
 		registrationBean.addUrlPatterns("/user/*"); // Register filter for API endpoints
 		return registrationBean;
 	}
+*/
 }
